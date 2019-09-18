@@ -1,13 +1,15 @@
-.legu-mouseover {
+.legu-mouseover:hover {
   color: yellow !important;
   /*font-weight: bold !important;*/
 }
 
+/* a Tag 스타일 변형 */
 .legu-link {
-  color: rgb(252, 216, 16) !important;
-  border: none !important;
+  /*color: rgb(252, 216, 16) !important;*/
+  border-bottom: 1px solid #ffffff !important;
 }
 
 .legu-link:hover {
-  border-bottom: 1px solid rgb(252, 216, 16) !important;
+  color: yellow !important;
+  border: none !important;
 }

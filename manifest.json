@@ -19,7 +19,7 @@
       "js": [
         "api/darkreader.js",
         "api/jquery-3.4.1.min.js",
-        "inject/js/darkreader.js"
+        "inject/js/styleVariation.js"
       ],
       "css": ["inject/css/style.css"],
       "run_at": "document_start",
