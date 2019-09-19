@@ -19,7 +19,7 @@
       "js": [
         "api/darkreader.js",
         "api/jquery-3.4.1.min.js",
-        "inject/js/styleVariation.js"
+        "inject/js/darkreader.js"
       ],
       "css": ["inject/css/style.css"],
       "run_at": "document_start",
@@ -29,6 +29,10 @@
     {
       "matches": ["<all_urls>"],
       "js": ["inject/js/contents.js"]
+    },
+    {
+      "matches": ["https://*.naver.com/*"],
+      "js": ["inject/js/styleVariation/naver.js"]
     }
   ],
   "permissions": ["storage", "tabs", "<all_urls>"]
