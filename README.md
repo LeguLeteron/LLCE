@@ -1,4 +1,4 @@
-# LeguLeteron Reader
+# LeguLeteron
 
 보다 쉬운 웹을 위한 프로젝트 The LeguLeteron Project의 확장 기능입니다.
 
