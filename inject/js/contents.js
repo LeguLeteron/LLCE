@@ -3,7 +3,7 @@ content();
 function content() {
   makeSideBar();
   imgCheck();
-  textCheck();
+  //textCheck();
   $("*").addClass("legu-element");
 }
 
@@ -13,10 +13,12 @@ function imgCheck() {
   function styleSideBar() {
     $("#leguSideBar").removeClass("legu-element");
     if (imgStatus == true) {
+      $("#leguSideBarTitle").text("이미지입니다");
       $("#leguSideBar").removeClass("legu-sideBar");
       $("#leguSideBar").removeClass("legu-sideBar-text");
       $("#leguSideBar").addClass("legu-sideBar-img");
     } else if (imgStatus == false) {
+      $("#leguSideBarTitle").text("LeguLeteron");
       $("#leguSideBar").removeClass("legu-sideBar-img");
       $("#leguSideBar").addClass("legu-sideBar");
     }
@@ -57,6 +59,7 @@ function imgCheck() {
     }
   });
 }
+/*
 function textCheck() {
   var textStatus = false;
 
@@ -78,16 +81,26 @@ function textCheck() {
     styleSideBar();
   }
 
-  $("*").each(function() {});
+  $("*").each(function() {
+    var x = $(this).
+  });
 }
-
+*/
 function makeSideBar() {
   $("body").append(
     $("<div/>", {
       id: "leguSideBar",
-      class: "legu-sideBar",
-      text: "SIDE BAR"
+      class: "legu-sideBar"
     })
   );
+  $("#leguSideBar").append(
+    $("<div/>", {
+      id: "leguSideBarTitle",
+      class: "legu-sideBar-title",
+      text: "LeguLeteron"
+    })
+  );
+
   $("#leguSideBar").removeClass("legu-element");
+  $("#leguSideBarTitle").removeClass("legu-element");
 }
