@@ -1,20 +1,27 @@
+/* For Native Application */
 var port = null;
 
-/*
-var getKeys = function(obj) {
+var getKeys = function(obj){
     var keys = [];
     for(var key in obj){
-        keys.push(key);
+       keys.push(key);
     }
     return keys;
-}
-*/
+ }
+
+var message = {
+    "com_port" : "COM3",
+    "cursor": true,
+    "vibrate": true,
+    "vibrate_text": true,
+    "vibrate_image": true,
+    "output": true,
+    "string": ""
+};
 
 function sendNativeMessage() {
-    var msg = {
-      cursor : true,  
-    };
-    port.postMessage(msg);
+  port.postMessage(message);
+  appendMessage("Sent message: <b>" + JSON.stringify(message) + "</b>");
 }
 
 function onNativeMessage(msg) {
@@ -22,6 +29,7 @@ function onNativeMessage(msg) {
 }
 
 function onDisconnected(){
+    console.log("Failed to connect: " + chrome.runtime.lastError.message);
     port = null;
 }
 
@@ -31,3 +39,17 @@ function connect() {
     port.onMessage.addListener(onNativeMessage);
     port.onDesconnect.addListener(onDisconnected);
 }
+
+/* For Extension */
+var contentTabId;
+
+chroe.runtime.onMessage.addListener(function(msg, sender){
+    if(msg.from == "content"){
+        contentTabId = sender.tab.id;
+    }
+    if(msg.from == "popup" && contentTabId){
+        chrome.tabs.sendMessage(contentTabId, {
+            from: "background"
+        })
+    }
+})
