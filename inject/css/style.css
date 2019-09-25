@@ -1,18 +1,3 @@
-.legu-mouseover:hover {
-  color: yellow !important;
-  /*font-weight: bold !important;*/
-}
-
-.legu-link {
-  /*color: rgb(252, 216, 16) !important;*/
-  border-bottom: 1px solid #ffffff !important;
-}
-
-.legu-link:hover {
-  color: yellow !important;
-  border: none !important;
-}
-
 #leguSideBar {
   width: 100%;
   height: 100px;
@@ -53,11 +38,12 @@
   color: black !important;
 }
 
+/*
 .legu-sideBar-text {
   background-color: skyblue !important;
   color: black !important;
 }
-
+*/
 .legu-element {
   color: rgb(245, 255, 110) !important;
 }
