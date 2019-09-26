@@ -104,3 +104,12 @@ function makeSideBar() {
   $("#leguSideBar").removeClass("legu-element");
   $("#leguSideBarTitle").removeClass("legu-element");
 }
+
+/* communicate */
+chrome.runtime.sendMessage({from: "content"});
+
+chrome.runtime.onMessage.addListener(function(msg){
+  if(msg.from == "background"){
+    console.log(msg.testString);
+  }
+});

@@ -16,6 +16,8 @@ $(document).ready(function(){
             //console.log("1 체크아웃!");
             message.svCheck = false;
         }
+        //console.log(message);
+        sendMessage(message);
     });
     $(".switchCheckBox.bb").change(function(){
         if($(".switchCheckBox.bb").is(":checked")){
@@ -25,5 +27,24 @@ $(document).ready(function(){
             //console.log("2 체크아웃!");
             message.bbCheck = false;
         }
+        //console.log(message);
+        sendMessage(message);
     })
 });
+
+var port = chrome.extension.connect({
+    name: "popupToBackground"
+});
+
+function sendMessage(msg)
+{
+    port.postMessage(msg);
+}
+
+function getMessage()
+{
+    port.onMessage.addListener(function(msg){
+        console.log("message recieved :" + msg.testString);
+    });
+}
+getMessage();

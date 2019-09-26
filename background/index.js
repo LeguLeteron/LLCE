@@ -10,26 +10,32 @@ var getKeys = function(obj){
  }
 
 var message = {
-    "com_port" : "COM3",
-    "cursor": true,
-    "vibrate": true,
-    "vibrate_text": true,
-    "vibrate_image": true,
-    "output": true,
-    "string": ""
+    com_port : "COM3",
+    cursor : true,
+    vibrate: true,
+    vibrate_text: true,
+    vibrate_image: true,
+    output: true,
+    string: ""
 };
+
+var status_extension = {
+    svCheck: false,
+    bbCheck: false,
+    testString: ""
+}
 
 function sendNativeMessage() {
   port.postMessage(message);
-  appendMessage("Sent message: <b>" + JSON.stringify(message) + "</b>");
+  //appendMessage("Sent message: <b>" + JSON.stringify(message) + "</b>");
 }
 
 function onNativeMessage(msg) {
-    console.log("Received Message : " + msg);
+    //console.log("Received Message : " + msg);
 }
 
 function onDisconnected(){
-    console.log("Failed to connect: " + chrome.runtime.lastError.message);
+    //console.log("Failed to connect: " + chrome.runtime.lastError.message);
     port = null;
 }
 
@@ -41,15 +47,32 @@ function connect() {
 }
 
 /* For Extension */
-var contentTabId;
+chrome.extension.onConnect.addListener(function(_port){
+    //console.log("Connected... ");
+    _port.onMessage.addListener(function(msg){
+        setStatusExtension(msg.svCheck, msg.bbCheck, msg.testString);
+        
+        _port.postMessage({
+            svCheck : msg.svCheck,
+            bbCheck : msg.bbCheck,
+            testString: "Test"
+        });
 
-chroe.runtime.onMessage.addListener(function(msg, sender){
-    if(msg.from == "content"){
-        contentTabId = sender.tab.id;
-    }
-    if(msg.from == "popup" && contentTabId){
-        chrome.tabs.sendMessage(contentTabId, {
-            from: "background"
-        })
-    }
-})
+        chrome.tabs.query({}, function(tabs){
+            for(var i = 0; i < tabs.length; i++){
+                chrome.tabs.sendMessage(tabs[i].id, {
+                    from: "background",
+                    svCheck : msg.svCheck,
+                    bbCheck : msg.bbCheck,
+                    testString: "Test"
+                });
+            }
+        });
+    });
+});
+
+function setStatusExtension(svCheck, bbCheck, testString){
+    status_extension.svCheck = svCheck;
+    status_extension.bbCheck = bbCheck;
+    status_extension.testString = testString;
+}
