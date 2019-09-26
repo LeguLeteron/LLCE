@@ -1,6 +1,18 @@
 body{
   width: 250px;
   height: 350px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+/* title */
+.settingHeader{
+  padding: 5px;
+  margin-bottom: 5px;
+}
+.settingHeader .settingMainTitle{
+  color: rgb(243, 194, 33);
+  text-align: center;
 }
 /* Switch */
 .switch {
@@ -65,18 +77,56 @@ input:checked + .slider:before {
 /* Setting */
 .settingList{
     display: inline-block;
+    width: 100%;
+    padding: 0;
 }
 .settingList .settingItem{
     display: inline-block;
     width: 100%;
     height: 40px;
     line-height: 40px;
+    position: relative;
+}
+
+div.settingText::after{
+  content: "";
+  width: 120px;
+  height: 1px;
+  background-color: rgb(243, 194, 33);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -60px;
+}
+div.settingText{
+  width: 60%;
+  height: 40px;
+  text-align: center;
+  float: left;
+  position: relative;
 }
 span.settingTitle{
   font-size: 15px;
   line-height: 40px;
 }
 span.settingStatus{
-  color: red;
+  font-size: 15px;
   line-height: 40px;
+}
+div.settingSwitch{
+  width: 40%;
+  height: 40px;
+  text-align: center;
+  float: right;
+  line-height: 40px;
+  display: table;
+}
+div.switchWrap{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.svChecked {
+  background-color: #000;
+  color: #F5FF6E;
 }

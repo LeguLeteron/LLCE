@@ -7,23 +7,38 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>LeguLeteron Setting</h1>
+    <header class="settingHeader">
+        <h1 class="settingMainTitle">LeguLeteron Setting</h1>
+    </header>
+
     <ul class="settingList">
         <li class="settingItem">
-            <span class="settingTitle">웹페이지 변환</span> 
-            <span class="settingStatus">On</span>
-            <label class="switch">
-                <input class="switchCheckBox sv" type="checkbox">
-                <span class="slider round"></span>
-            </label>
+            <div class="settingText">
+                <span class="settingTitle">웹페이지 변환</span> 
+                <span class="settingStatus">On</span>
+            </div>
+            <div class="settingSwitch">
+                <div class="switchWrap">
+                    <label class="switch">
+                        <input class="switchCheckBox sv" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
         </li>
         <li class="settingItem">
-            <span class="settingTitle">하단바</span> 
-            <span class="settingStatus">On</span>
-            <label class="switch">
-                <input class="switchCheckBox bb" type="checkbox">
-                <span class="slider round"></span>
-            </label>
+            <div class="settingText">
+                <span class="settingTitle">하단바</span> 
+                <span class="settingStatus">On</span>
+            </div>
+            <div class="settingSwitch">
+                <div class="switchWrap">
+                    <label class="switch">
+                        <input class="switchCheckBox bb" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
         </li>
     </ul>
     <script src="../../api/jquery-3.4.1.min.js"></script>

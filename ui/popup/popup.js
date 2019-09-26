@@ -17,6 +17,7 @@ $(document).ready(function(){
             message.svCheck = false;
         }
         //console.log(message);
+        popupSv();
         sendMessage(message);
     });
     $(".switchCheckBox.bb").change(function(){
@@ -32,6 +33,21 @@ $(document).ready(function(){
     })
 });
 
+function popupSv()
+{
+    if(message.svCheck)
+    {
+        $("*").addClass("svChecked");
+        $("lable.switch").removeClass("svChecked");
+        $("span.slider.round").removeClass("svChecked");
+        $("div.switchWrap").removeClass("svChecked");
+    }else
+    {
+        $("*").removeClass("svChecked");
+    }
+}
+
+/* For Communicate */
 var port = chrome.extension.connect({
     name: "popupToBackground"
 });
