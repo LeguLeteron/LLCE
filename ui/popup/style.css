@@ -148,6 +148,7 @@ div.bottomBar{
   right: 0;
   text-align: center;
   transition-duration: 0.6s;
+  z-index: 999;
 }
 
 .bottomBar .bottomBar-link{
