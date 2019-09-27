@@ -31,5 +31,5 @@
       "js": ["inject/js/contents.js"]
     }
   ],
-  "permissions": ["activeTab", "tabs", "<all_urls>"]
+  "permissions": ["nativeMessaging", "activeTab", "tabs", "<all_urls>"]
 }
